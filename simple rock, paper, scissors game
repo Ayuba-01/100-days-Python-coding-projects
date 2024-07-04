@@ -1,0 +1,66 @@
+rock = '''
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+'''
+
+paper = '''
+    _______
+---'   ____)____
+          ______)
+          _______)
+         _______)
+---.__________)
+'''
+
+scissors = '''
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+'''
+
+#Write your code below this line 👇
+import random
+print("Make a chioce\n Type 0 for Rock \n Type 1 for Paper \n Type 2 for Scissors.")
+choice = int(input())
+
+if choice == 0:
+    print(f"You choose Rock\n {rock}")
+elif choice == 1:
+    print(f"You choose Paper\n {paper}")
+elif choice == 2:
+    print(f"You choose Scissors\n {scissors}")
+else:
+    print("You typed and invalid number")
+
+computer_choice = random.randint(0,2)
+
+if computer_choice == 0:
+    print(f"Computer choose Rock\n {rock}")
+elif computer_choice == 1:
+    print(f"Computer choose Paper\n {paper}")
+elif computer_choice == 2:
+    print(f"Computer choose Scissors\n {scissors}")
+
+if choice == 0 and computer_choice == 2:
+    print("Congratulations You win!")
+elif choice == 1 and computer_choice == 0:
+    print("Congratulations You win!")
+elif choice == 2 and computer_choice == 1:
+    print("Congratulations You win!")
+elif choice == 2 and computer_choice == 0:
+    print("Sorry You loss!")
+elif choice == 0 and computer_choice == 1:
+    print("Sorry You loss!")
+elif choice == 1 and computer_choice == 2:
+    print("Sorry You loss!")
+elif choice == computer_choice:
+    print("This is a draw!")
+elif choice > 2 or choice < 0:
+    print("You loss")
