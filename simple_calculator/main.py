@@ -33,7 +33,8 @@ def calculator():
         if answer == "n":
             again = False
             print("Thank you!")
-        num1 = result
+        else:
+            num1 = result
         
 
 
