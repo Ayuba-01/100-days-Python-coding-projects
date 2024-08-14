@@ -1,6 +1,7 @@
 import random
 from art import logo
 
+
 def play_game():
     print(logo)
     print("Welcome to Guess the Number")
@@ -18,7 +19,7 @@ def play_game():
         attempts = 5
     else:
         print("Run again and Enter a valid level")
-    print(f"You have choosen {level} level, you have {attempts} attempts left.")
+    print(f"You have chosen {level} level, you have {attempts} attempts left.")
         
     while not game_over:
         player_guess = int(input("Guess a number: "))

@@ -3,6 +3,7 @@ from data import data
 import random
 import os
 
+
 def play_game():
     def pick_random_data():
         """Returns a random data from the list of data"""
@@ -15,23 +16,8 @@ def play_game():
     game_over = False
     print(logo)
 
-    # {
-        # 'name': 'Kourtney Kardashian', 
-        # 'follower_count': 90, 
-        # 'description': 'Reality TV personality', 
-        # 'country': 'United States'
-        # }
-
-    # {
-        # 'name': 'Rihanna', 
-        # 'follower_count': 81, 
-        # 'description': 'Musician and businesswoman', 
-        # 'country': 'Barbados'
-        # }
-
-
     while not game_over:
-        if a == b :
+        if a == b:
             b = pick_random_data()
         print(f"Compare A: {a['name']}, a {a['description']}, from {a['country']}")
         print(vs)
