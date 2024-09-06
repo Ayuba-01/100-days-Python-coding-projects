@@ -4,7 +4,6 @@ from food import Food
 from score import Score
 import time
 
-
 is_game_on = True
 screen = t.Screen()
 screen.setup(width=600, height=600)
@@ -32,14 +31,17 @@ while is_game_on:
 
     # Detect collision with wall
     if snake.snake_head.xcor() > 280 or snake.snake_head.xcor() < -295 or snake.snake_head.ycor() > 290 or snake.snake_head.ycor() < -280:
-        is_game_on = False
-        score.game_over()
+        score.reset_score()
+        snake.reset_snake()
+        score.store_highscore()
 
     # Detect collision with body
-    for body in snake.snake_body[1:]:
-        if snake.snake_head.distance(body) < 10:
-            is_game_on = False
-            score.game_over()
-    #if snake.snake_head.distance(snake.snake_body[])
+    for body in snake.snake:
+        if body == snake.snake_head:
+            pass
+        elif snake.snake_head.distance(body) < 10:
+            score.reset_score()
+            snake.reset_snake()
+            score.store_highscore()
 
 screen.exitonclick()

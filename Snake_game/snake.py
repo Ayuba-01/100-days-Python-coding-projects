@@ -27,6 +27,14 @@ class Snake:
         for position in STARTING_POSITION:
             self.add_to_snake_body(position)
 
+    def reset_snake(self):
+        for segment in self.snake:
+            segment.goto(1000,1000)
+        self.snake.clear()
+        self.create_snake_body()
+        self.snake_head = self.snake[0]
+        self.snake_body = self.snake[1:]
+
     def extend_snake(self):
         last_snake_body = self.snake[-1]
         # last_xcor = last_snake_body.xcor()
