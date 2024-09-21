@@ -22,10 +22,7 @@ while game_on:
                                     prompt="Type a state name").title()
 
     if answer_state == "Exit":
-        state_to_learn = []
-        for state in state_list:
-            if state not in guessed_states:
-                state_to_learn.append(state)
+        state_to_learn = [state for state in state_list if state not in guessed_states]
         df = pandas.DataFrame(state_to_learn)
         df.to_csv("State to Learn")
         t.goto(0, 0)
