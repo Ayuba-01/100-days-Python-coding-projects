@@ -35,19 +35,30 @@ class QuizInterface:
         self.window.mainloop()
 
     def get_next_question(self):
-        question_text = self.quiz.next_question()
-        self.canvas_background.itemconfigure(self.question_text, text=question_text)
+        self.canvas_background.config(bg="white")
+        self.score_label.config(text=f"Score: {self.quiz.score}")
+        if self.quiz.still_has_questions():
+            question_text = self.quiz.next_question()
+            self.canvas_background.itemconfigure(self.question_text, text=question_text)
+        else:
+            self.canvas_background.itemconfigure(self.question_text, text="You have reached the end of the quiz."
+                                                                          f"\n You score "
+                                                                          f"{self.quiz.score}/"
+                                                                          f"{len(self.quiz.question_list)} ")
+            self.correct_button.config(state="disabled")
+            self.wrong_button.config(state="disabled")
 
     def correct_button_func(self):
-        response = self.quiz.check_answer("True")
-        if response is True:
-            self.canvas_background.config(bg="green")
-        else:
-            self.canvas_background.config(bg="red")
+        is_right = self.quiz.check_answer("True")
+        self.feedback(is_right)
 
     def wrong_button_func(self):
-        response = self.quiz.check_answer("False")
-        if response is False:
+        is_right = self.quiz.check_answer("False")
+        self.feedback(is_right)
+
+    def feedback(self, is_right):
+        if is_right:
             self.canvas_background.config(bg="green")
         else:
             self.canvas_background.config(bg="red")
+        self.window.after(1000, self.get_next_question)
